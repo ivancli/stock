@@ -11,6 +11,10 @@ namespace Stock\Repositories\Models\Base;
 
 use Stock\Contracts\Models\Base\MarketContract;
 
+/**
+ * Class MarketRepository
+ * @package Stock\Repositories\Models\Base
+ */
 class MarketRepository extends MarketContract
 {
 

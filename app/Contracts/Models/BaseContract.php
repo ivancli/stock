@@ -121,7 +121,7 @@ class BaseContract
         return $model->restore();
     }
 
-    private function __getData(array $data)
+    protected function __getData(array $data)
     {
         return array_only($data, $this->builder()->getFillable());
     }

@@ -24,5 +24,6 @@ class RepositoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(\Stock\Contracts\Models\Base\MarketContract::class, \Stock\Repositories\Models\Base\MarketRepository::class);
+        $this->app->bind(\Stock\Contracts\Models\Base\CompanyContract::class, \Stock\Repositories\Models\Base\CompanyRepository::class);
     }
 }

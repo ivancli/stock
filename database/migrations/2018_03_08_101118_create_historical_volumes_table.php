@@ -16,7 +16,7 @@ class CreateHistoricalVolumesTable extends Migration
         \DB::transaction(function () {
             Schema::create('historical_volumes', function (Blueprint $table) {
                 $table->bigIncrements('id');
-                $table->integer('company_id')->unsigned();
+                $table->integer('company_id')->unsigned()->nullable();
                 $table->bigInteger('amount')->unsigned();
                 $table->timestamps();
 

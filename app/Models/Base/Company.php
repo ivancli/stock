@@ -13,14 +13,14 @@ class Company extends Model
     /**
      * @var array
      */
-    protected $fillable = ['name', 'symbol', 'market', 'sector'];
+    protected $fillable = ['name', 'symbol', 'market', 'sector', 'industry'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function price()
+    public function quote()
     {
-        return $this->belongsTo(HistoricalPrice::class, 'latest_historical_price_id', 'id');
+        return $this->belongsTo(HistoricalQuote::class, 'latest_historical_quote_id', 'id');
     }
 
     /**
@@ -42,9 +42,9 @@ class Company extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function historicalPrices()
+    public function historicalQuotes()
     {
-        return $this->hasMany(HistoricalPrice::class, 'company_id', 'id');
+        return $this->hasMany(HistoricalQuote::class, 'company_id', 'id');
     }
 
     /**

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateHistoricalPricesTable extends Migration
+class CreateHistoricalQuotesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,9 @@ class CreateHistoricalPricesTable extends Migration
     public function up()
     {
         \DB::transaction(function () {
-            Schema::create('historical_prices', function (Blueprint $table) {
+            Schema::create('historical_quotes', function (Blueprint $table) {
                 $table->bigIncrements('id');
-                $table->integer('company_id')->unsigned();
+                $table->integer('company_id')->unsigned()->nullable();
                 $table->decimal('amount')->unsigned();
                 $table->timestamps();
 
@@ -34,7 +34,7 @@ class CreateHistoricalPricesTable extends Migration
     public function down()
     {
         \DB::transaction(function () {
-            Schema::dropIfExists('historical_prices');
+            Schema::dropIfExists('historical_quotes');
         });
     }
 }

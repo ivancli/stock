@@ -16,7 +16,7 @@ class CreateHistoricalMarketCapitalsTable extends Migration
         \DB::transaction(function () {
             Schema::create('historical_market_capitals', function (Blueprint $table) {
                 $table->bigIncrements('id');
-                $table->integer('company_id')->unsigned();
+                $table->integer('company_id')->unsigned()->nullable();
                 $table->bigInteger('amount')->unsigned();
                 $table->timestamps();
 

@@ -8,7 +8,7 @@ use Stock\Models\Model;
  * Class HistoricalPrice
  * @package Stock\Models\Base
  */
-class HistoricalPrice extends Model
+class HistoricalQuote extends Model
 {
     /**
      * @var array

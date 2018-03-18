@@ -13,14 +13,14 @@ interface ScraperContract
 {
     /**
      * Fetch content from given resources
-     * @return void
+     * @return ScraperContract
      */
     public function fetch();
 
     /**
      * Extract items from given content
      *
-     * @return void
+     * @return ScraperContract
      */
     public function extract();
 }

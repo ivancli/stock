@@ -10,8 +10,9 @@ namespace Stock\Contracts\Scrapers;
 
 
 use GuzzleHttp\Client;
+use Stock\Exceptions\Scrapers\UnableToDownloadMarketResourceException;
 
-abstract class MarketContract implements ScraperContract
+abstract class CompanyContract implements ScraperContract
 {
     /**
      * @var string
@@ -26,7 +27,7 @@ abstract class MarketContract implements ScraperContract
     /**
      * @var array
      */
-    protected $markets;
+    protected $companies;
 
     /**
      * @var string
@@ -47,7 +48,8 @@ abstract class MarketContract implements ScraperContract
 
     /**
      * Fetch content from given resources
-     * @return void
+     * @return CompanyContract
+     * @throws UnableToDownloadMarketResourceException
      */
     public function fetch()
     {
@@ -61,8 +63,33 @@ abstract class MarketContract implements ScraperContract
             if ($response->getStatusCode() == 200) {
                 $content = $response->getBody()->getContents();
                 $this->content = $content;
+            } else {
+                throw new UnableToDownloadMarketResourceException($this->url, null, $response->getStatusCode());
             }
         }
+        return $this;
+    }
 
+    /**
+     * @return CompanyContract
+     */
+    abstract public function extract();
+
+    /**
+     * Get content
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * Get companies
+     * @return array
+     */
+    public function getCompanies()
+    {
+        return $this->companies;
     }
 }
